@@ -1,0 +1,31 @@
+.category-menu {
+  $root: &;
+  font-size: 1rem;
+  margin-bottom: 40px;
+  #{$root}__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: wrap;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    #{$root}__item {
+      text-decoration: none;
+      border: 1px solid var(--text-color);
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
+      &:hover, &--selected {
+        background-color: var(--text-bg-hl-more);
+        border-bottom-style: dashed;
+      }
+      #{$root}__link {
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.parcel-cache
+.psc-ide-port
+.psci
+.psci_modules
+.spago
+dist
+index.js
+node_modules
+output
+serve

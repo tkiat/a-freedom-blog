@@ -1,0 +1,29 @@
+.article-table {
+  $body: "#{&}__body";
+  border-spacing: 0 0.5em;
+  &__header {
+    &-date {
+      text-align: left;
+    }
+    &-title {
+      text-align: left;
+    }
+  }
+  #{$body}-row {
+    &:hover {
+      background-color: var(--text-bg-hl);
+    }
+    #{$body}-date {
+      display: table-cell;
+      width: 6em;
+      text-align: left;
+      vertical-align: top;
+    }
+    #{$body}-title {
+      text-align: left;
+      #{$body}-link {
+        display: block;
+      }
+    }
+  }
+}

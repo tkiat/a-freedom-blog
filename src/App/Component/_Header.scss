@@ -1,0 +1,30 @@
+.header {
+  $root: &;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+  &__info {
+    display: flex;
+    #{$root}__about {
+      display: block;
+    }
+    #{$root}__title {
+      font-weight: bold;
+      margin-right: 1.5em;
+    }
+  }
+  &__theme-button {
+    background-color: var(--text-bg-reverse);
+    border: 2px solid var(--text-bg-reverse);
+    border-radius: 0.3em;
+    cursor: pointer;
+    color: var(--text-bg);
+    &:hover {
+      box-shadow: 0 0 0px 5px var(--text-bg-reverse);
+    }
+    &--dark {
+      background: white;
+      color: gray;
+    }
+  }
+}

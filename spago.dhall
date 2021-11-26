@@ -1,0 +1,31 @@
+{ name = "my-project"
+, dependencies =
+  [ "affjax"
+  , "argonaut-codecs"
+  , "arrays"
+--   , "console"
+  , "effect"
+  , "either"
+  , "exceptions"
+  , "foldable-traversable"
+  , "foreign"
+  , "maybe"
+  , "partial"
+  , "prelude"
+  , "psci-support"
+  , "quickcheck"
+  , "react-basic"
+  , "react-basic-dom"
+  , "react-basic-hooks"
+  , "record"
+  , "routing"
+  , "strings"
+  , "transformers"
+  , "unicode"
+  , "web-dom"
+  , "web-html"
+  , "web-storage"
+  ]
+, packages = ./packages.dhall
+, sources = [ "src/**/*.purs", "test/**/*.purs" ]
+}
