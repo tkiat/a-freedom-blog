@@ -1,8 +1,8 @@
 {
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)/index.45d3956e.css", "dest": "/index.45d3956e.css" },
-    { "src": "/(.*)/index.4c4240b0.js", "dest": "/index.4c4240b0.js" },
+    { "src": "/(.*)/index.ea2e80d4.css", "dest": "/index.ea2e80d4.css" },
+    { "src": "/(.*)/index.4b25f387.js", "dest": "/index.4b25f387.js" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
