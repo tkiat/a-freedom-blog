@@ -8,18 +8,17 @@
     align-items: flex-end;
     flex-wrap: wrap;
 
-    list-style-type: none;
     margin: 0;
     padding: 0;
+    gap: 0.5em;
+
+    list-style-type: none;
     #{$root}__item {
       text-decoration: none;
       border: 1px solid var(--text-color);
-      &:not(:last-child) {
-        margin-right: 1em;
-      }
       &:hover, &--selected {
-        background: linear-gradient(0deg, var(--text-bg-hl) 95%, var(--text-bg-reverse) 95%);
-        border-top-style: dashed;
+        background: linear-gradient(0deg, var(--text-bg-hl) 93%, var(--text-bg-reverse) 93%);
+/*         border-top-style: dashed; */
       }
       #{$root}__link {
         display: block;

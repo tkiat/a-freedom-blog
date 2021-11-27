@@ -17,8 +17,8 @@ serveLocalPost = false
 urlPrefixPost :: String
 urlPrefixPost =
   if serveLocalPost
-    then "/post"
-    else "https://raw.githubusercontent.com/tkiat/assets-public/main/post"
+    then "../../my-writings-public/blog"
+    else "https://raw.githubusercontent.com/tkiat/my-writings-public/main/blog"
 
 urlPrefixSite :: String
 urlPrefixSite = case maybeUrlPrefixSite of

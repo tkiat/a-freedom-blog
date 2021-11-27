@@ -4,9 +4,9 @@
   margin-bottom: 40px;
   #{$root}__list {
     display: flex;
-    justify-content: flex-start;
     align-items: flex-end;
     flex-wrap: wrap;
+    gap: 0.5em;
 
     list-style-type: none;
     margin: 0;
@@ -14,12 +14,9 @@
     #{$root}__item {
       text-decoration: none;
       border: 1px solid var(--text-color);
-      &:not(:last-child) {
-        margin-right: 1em;
-      }
       &:hover, &--selected {
-        background: linear-gradient(0deg, var(--text-bg-reverse) 5%, var(--text-bg-hl) 5%);
-        border-bottom-style: dashed;
+        background: linear-gradient(0deg, var(--text-bg-reverse) 7%, var(--text-bg-hl) 7%);
+/*         border-bottom-style: dashed; */
       }
       #{$root}__link {
         display: block;
