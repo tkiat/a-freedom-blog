@@ -6,8 +6,8 @@
 
 @use 'base';
 
-@use '/src/App/Component/Article';
-@use '/src/App/Component/ArticleTable';
-@use '/src/App/Component/CategoryMenu';
-@use '/src/App/Component/SubcategoryMenu';
-@use '/src/App/Component/Header';
+@use '../App/Component/Article';
+@use '../App/Component/ArticleTable';
+@use '../App/Component/CategoryMenu';
+@use '../App/Component/SubcategoryMenu';
+@use '../App/Component/Header';
