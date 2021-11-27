@@ -18,7 +18,7 @@
         margin-right: 1em;
       }
       &:hover, &--selected {
-        background-color: var(--text-bg-hl-more);
+        background: linear-gradient(0deg, var(--text-bg) 95%, var(--text-bg-reverse) 95%);
         border-top-style: dashed;
       }
       #{$root}__link {
