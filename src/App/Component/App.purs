@@ -7,6 +7,7 @@ import App.Component.ArticleTable (mkArticleTable)
 import App.Component.CategoryMenu (mkCategoryMenu)
 import App.Component.SubcategoryMenu (mkSubcategoryMenu)
 import App.Component.Header (mkHeader)
+import App.Article (CategoryObj)
 import App.Config (urlPrefixPost)
 import App.Routing (ComponentWithContext, AppRoute(..), mkComponentWithContext, useRouterContext)
 import App.Theme (Theme(..))
@@ -39,7 +40,7 @@ mkApp = do
       Just (Left e) -> pure $ R.text e
       Just (Right j) -> case decodeJson j of
         Left _ -> pure $ R.text "Cannot decode article lists"
-        Right list -> do
+        Right (list :: Array CategoryObj) -> do
           let categories = map (\a -> a.category) list
           let categoryCur = case route of
                 Just (ArticleTable p1 _) -> p1
