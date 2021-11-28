@@ -14,7 +14,8 @@ mkSubcategoryMenu = do
   link <- mkLink
   mkComponentWithContext "SubcategoryMenu"
     \{categoryObj: co, subcategory: s} -> React.do
-    let subCategories = ["all"] <> map (\x -> x.subcategory) co.children
+--     let subCategories = ["all"] <> map (\x -> x.subcategory) co.children
+    let subCategories = map (\x -> x.subcategory) co.children
     pure $
       R.nav {
         className: "subcategory-menu"

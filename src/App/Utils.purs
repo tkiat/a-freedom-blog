@@ -22,7 +22,7 @@ asyncFetch format url = useAff unit do
     Right r
       | r.status == StatusCode 200 -> pure $ Right r.body
       | otherwise -> pure $ Left $ "Status code from " <> url <> " is not 200"
-    Left _ -> pure $ Left $ "Unable to fetch from " <> url
+    Left e -> pure $ Left $ A.printError e <> ". Unable to fetch from " <> url
 
 capitalize :: String -> String
 capitalize s = case uncons s of

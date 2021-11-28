@@ -15,9 +15,11 @@
       background-color: var(--text-bg-hl);
       padding: 1em;
     }
-    li:not(:last-child) {
-      margin-bottom: 1em;
-      line-height: 1.25;
+    li {
+      line-height: 1.5;
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
     }
     img {
       display: block;
@@ -25,7 +27,7 @@
       margin: 0 auto;
     }
     p {
-      line-height: 1.7;
+      line-height: 1.5;
     }
     table {
       border-spacing: 0 0.5em;

@@ -7,7 +7,8 @@ module App.Config (
 import Data.Maybe (Maybe(..))
 import Prelude
 
--- an extra URL prefix e.g. for GitHub pages like Just "a-freedom-blog"
+-- an extra URL prefix e.g. for GitHub pages like
+-- https://www.tkiat.github.io/a-freedom-blog
 maybeUrlPrefixSite :: Maybe String
 maybeUrlPrefixSite = Nothing
 
@@ -17,7 +18,7 @@ serveLocalPost = false
 urlPrefixPost :: String
 urlPrefixPost =
   if serveLocalPost
-    then "../../my-writings-public/blog"
+    then "/blog"
     else "https://raw.githubusercontent.com/tkiat/my-writings-public/main/blog"
 
 urlPrefixSite :: String
