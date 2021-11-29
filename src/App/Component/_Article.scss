@@ -12,6 +12,10 @@
       background-color: var(--text-bg-hl);
       white-space: pre-wrap;
     }
+    figcaption {
+      padding: 0.5em 0;
+      text-align: center;
+    }
     pre {
       background-color: var(--text-bg-hl);
       padding: 1em;
