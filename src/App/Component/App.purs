@@ -34,14 +34,14 @@ mkApp = do
   mkComponentWithContext "App" \{themeInit} -> Hooks.do
     {route} <- useRouterContext ctx
     theme /\ setTheme <- Hooks.useState' themeInit
-    res <- asyncFetch ResponseFormat.json (urlPrefixPost <> "/list.json")
+    res <- asyncFetch ResponseFormat.json (urlPrefixPost <> "/metadata.json")
     case res of
       Nothing -> pure $ R.text "Loading..."
       Just (Left e) -> pure $ R.text e
       Just (Right j) -> case decodeJson j of
-        Left _ -> pure $ R.text "Cannot decode article lists"
-        Right (list :: Array CategoryObj) -> do
-          let categories = map (\a -> a.category) list
+        Left _ -> pure $ R.text "Cannot decode article metadatas"
+        Right (metadata :: Array CategoryObj) -> do
+          let categories = map (\a -> a.category) metadata
           let categoryCur = case route of
                 Just (ArticleTable p1 _) -> p1
                 Just (Article p1 _ _) -> p1
@@ -55,7 +55,7 @@ mkApp = do
             , case route of
                 Just About -> about
                 Just (ArticleTable p1 p2) ->
-                  case find (\x -> x.category == p1) list of
+                  case find (\x -> x.category == p1) metadata of
                   Just c -> do
                     if p2 == "all" ||
                        isJust(find (\x -> x.subcategory == p2) c.children)

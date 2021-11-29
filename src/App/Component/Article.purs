@@ -4,7 +4,7 @@ import Affjax.ResponseFormat as ResponseFormat
 import App.Article (ArticleSlug, Category, Subcategory)
 import App.Config (urlPrefixPost)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
-import App.Utils (asyncFetch)
+import App.Utils (asyncFetch, toFolderName)
 import Data.Either (Either(..))
 import Data.Maybe (Maybe(..))
 import Data.String.Common (joinWith)
@@ -22,7 +22,8 @@ mkArticle :: ComponentWithContext Props
 mkArticle = do
   mkComponentWithContext "Article"
     \{articleSlug: as, category: c, subcategory: s} -> React.do
-    let url = joinWith "/" [urlPrefixPost, c, s, as <> ".md"]
+    let url = joinWith "/"
+          [urlPrefixPost, toFolderName c, toFolderName s, as <> ".md"]
     res <- asyncFetch ResponseFormat.string url
     case res of
       Nothing -> pure $ R.text "Loading..."

@@ -4,7 +4,6 @@ import App.Article (Category)
 import App.Component.Link (mkLink)
 import App.Config (urlPrefixSite)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
-import App.Utils (capitalize)
 import Prelude
 import React.Basic.DOM as R
 
@@ -29,7 +28,7 @@ mkCategoryMenu = do
                   link {
                     className: "category-menu__link"
                   , to: urlPrefixSite <> "/article/" <> x <> "/all"
-                  , children: [R.text $ capitalize x]
+                  , children: [R.text x]
                   }
                 ]
               }

@@ -10,14 +10,12 @@ about =
   , children: [
       R.h1_ [R.text "About Me"]
     , R.p_ [
-        R.text "I am Theerawat. My hobbies include coding, writing blogs, reading, and sustainability. My contact is tkiat@tutanota.com and my website is "
+        R.text "I am Theerawat. My hobbies include coding, writing blogs, reading, and sustainability. My contact is tkiat@tutanota.com and my personal website is "
       , R.a {href: "https://tkiat.github.io", children: [R.text "tkiat.github.io"]}
       ]
     , R.h1_ [R.text "About This Blog"]
-    , R.p_ [R.text "I am gravitated towards the true freedom, any action that reasonably respects others' freedom. Of course, the word 'reasonably' is subjective and I don't want to write my long definition here. I just want to say that the articles here tend to favor free software, DRM-free media, and a less impact lifestyle. All posts are not associated with anyone or any organization unless explicitly say so."]
-    , R.p_ [R.text "I intend to write everything here and post some of them to other (more) popular public sites. The style of this website is very simple because I want the reader to focus on content. I also love to write concise content. If there is no absolute need to write very long, why do it?"]
-    , R.p_ [R.text "I once used Pelican SSG but it required a Markdown file to contain both metadata and content. I preferred to decouple them and also I didn't really like any of its premade themes so I wrote this blog from scratch using Purescript and React.js."]
-    , R.p_ [R.text ""]
+    , R.p_ [R.text "The theme of this blog is freedom, anything that reasonably (by my standard) respects others' freedom. Articles usually favor free software and less-impact products and lifestyle. All posts are not associated with anyone or any organization unless explicitly say so."]
+    , R.p_ [R.text "I intend to write everything here and post a few of them to other (more) popular public sites later. I hope the simple style and the concise content of this website will engage the reader. I wrote this blog from scratch using Purescript and React.js mainly because I wanted to decouple article metadata and content. This was not possible with Pelican static site generator, my first implementation attempt."]
     , R.h1_ [R.text "Credits"]
     , R.p_ [
         R.a {href: "https://github.com/twitter/twemoji", children: [R.text "favicon"]}

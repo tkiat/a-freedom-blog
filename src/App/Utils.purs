@@ -6,7 +6,9 @@ import Affjax.StatusCode (StatusCode(..))
 import Data.CodePoint.Unicode (toUpperSimple)
 import Data.Either (Either(..))
 import Data.Maybe (Maybe(..))
+import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.String.CodePoints (uncons)
+import Data.String.Common (toLower)
 import Data.String.NonEmpty (toString)
 import Data.String.NonEmpty.CodePoints (cons)
 import Prelude
@@ -28,3 +30,12 @@ capitalize :: String -> String
 capitalize s = case uncons s of
   Just o -> toString $ cons (toUpperSimple o.head) o.tail
   _ -> s
+
+replaceAnd :: String -> String
+replaceAnd = replaceAll (Pattern "&") (Replacement "and")
+
+toFolderName :: String -> String
+toFolderName = toKebabLowercase >>> replaceAnd
+
+toKebabLowercase :: String -> String
+toKebabLowercase = replaceAll (Pattern " ") (Replacement "-") >>> toLower

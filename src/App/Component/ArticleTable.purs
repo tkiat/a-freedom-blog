@@ -23,7 +23,7 @@ mkArticleTable = do
             R.tr_ [
               R.th {
                 className: "article-table__header-date"
-              , children: [R.text "Date"]
+              , children: [R.text "Published"]
               }
             , R.th {
                 className: "article-table__header-title"
