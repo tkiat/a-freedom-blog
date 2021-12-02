@@ -20,18 +20,8 @@ mkHeader = do
         className: "header"
       , children: [
           R.div {
-            className: "header__info"
-          , children: [
-              R.div {
-                className: "header__title"
-              , children: [R.text "A Freedom Blog"]
-              }
-            , link {
-                className: "header__about"
-              , to: urlPrefixSite <> "/about"
-              , children: [R.text "About"]
-              }
-            ]
+            className: "header__title"
+          , children: [R.text "A Freedom Blog"]
           }
         , R.button {
             id: "theme-button"

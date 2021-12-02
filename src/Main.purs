@@ -15,6 +15,8 @@ import Web.HTML (window)
 import Web.HTML.HTMLDocument (toNonElementParentNode)
 import Web.HTML.Window as Window
 
+-- TODO shift title and theme to 70% whenopen article
+
 main :: Effect Unit
 main = do
   themeInit <- mkThemeInit

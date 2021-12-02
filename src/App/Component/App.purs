@@ -4,8 +4,7 @@ import Affjax.ResponseFormat as ResponseFormat
 import App.Component.About (about)
 import App.Component.Article (mkArticle)
 import App.Component.ArticleTable (mkArticleTable)
-import App.Component.CategoryMenu (mkCategoryMenu)
-import App.Component.SubcategoryMenu (mkSubcategoryMenu)
+import App.Component.BlogStructure (mkBlogStructure)
 import App.Component.Header (mkHeader)
 import App.Article (CategoryObj)
 import App.Config (urlPrefixPost)
@@ -18,6 +17,7 @@ import Data.Either (Either(..))
 import Data.Foldable (find)
 import Data.Maybe (Maybe(..), isJust)
 import Prelude
+import React.Basic (fragment)
 import React.Basic.DOM as R
 import React.Basic.Hooks as Hooks
 import React.Basic.Hooks ((/\))
@@ -28,8 +28,7 @@ mkApp = do
   ctx <- ask
   article <- mkArticle
   articleTable <- mkArticleTable
-  categoryMenu <- mkCategoryMenu
-  subcategoryMenu <- mkSubcategoryMenu
+  blogStructure <- mkBlogStructure
   header <- mkHeader
   mkComponentWithContext "App" \{themeInit} -> Hooks.do
     {route} <- useRouterContext ctx
@@ -51,18 +50,24 @@ mkApp = do
               if theme == Dark then " app__inner--dark" else ""
           , children: [
               header {theme, setTheme}
-            , categoryMenu {categories, cur: categoryCur}
             , case route of
-                Just About -> about
+                Just About -> 
+                  R.div {
+                    className: "app__main"
+                  , children: [blogStructure {metadata}, about]
+                  }
                 Just (ArticleTable p1 p2) ->
                   case find (\x -> x.category == p1) metadata of
                   Just c -> do
                     if p2 == "all" ||
                        isJust(find (\x -> x.subcategory == p2) c.children)
-                      then R.div_ [
-                        subcategoryMenu {categoryObj: c, subcategory: p2}
-                      , articleTable {categoryObj: c, subcategory: p2}
-                      ]
+                      then R.div {
+                        className: "app__main"
+                      , children: [
+                          blogStructure {metadata}
+                        , articleTable {categoryObj: c, subcategory: p2}
+                        ]
+                      }
                       else R.text $ "No subcategory '" <> p2 <> "'. Check URL."
                   _ -> R.text $ "No category '" <> p1 <> "'. Check URL."
                 Just (Article p1 p2 p3) ->

@@ -1,0 +1,42 @@
+@use '../../Style/mixins-hljs' as hljs;
+
+.app {
+  $root: &;
+  height: 100%;
+  &__main {
+    display: flex;
+  }
+  &__inner {
+    --text-color: #000;
+    --text-bg: #fff;
+    --text-bg-hl: #eee;
+    --text-bg-hl-more: #d7d7d7;
+    --text-bg-reverse: #222;
+    --link-hover-bg: #eee;
+
+    padding: clamp(10px, 1.5vw, 20px);
+    @include hljs.a11y-light;
+    min-height: 100vh;
+    background: var(--text-bg);
+    color: var(--text-color);
+    &--dark {
+      --text-color: #ddd;
+      --text-bg: #222;
+      --text-bg-hl: #111;
+      --text-bg-hl-more: #070707;
+      --text-bg-reverse: #fff;
+      --link-hover-bg: #444;
+
+      @include hljs.a11y-dark;
+      a {
+        color: turquoise;
+        &:visited {
+          color: salmon;
+        }
+        &:active {
+          color: yellow;
+        }
+      }
+    }
+  }
+}

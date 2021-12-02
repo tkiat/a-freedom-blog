@@ -5,7 +5,6 @@ import App.Component.Link (mkLink)
 import App.Config (urlPrefixSite)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
 import Prelude
-import React.Basic (fragment)
 import React.Basic.DOM as R
 
 type Props = {metadata :: Array CategoryObj}
@@ -13,32 +12,49 @@ mkBlogStructure :: ComponentWithContext Props
 mkBlogStructure = do
   link <- mkLink
   mkComponentWithContext "BlogStructure" \{metadata} ->
-    pure $
-      R.nav {
-        className: "blog-structure"
-      , children: flip map metadata (\co ->
-          fragment [
-            link {
-              className: "category-menu__link"
-            , to: urlPrefixSite <> "/article/" <> co.category <> "/all"
-            , children: [R.text co.category]
-            },
+    pure $ R.div {
+      className: "blog-structure"
+    , children: [
+        link {
+          className: "blog-structure__link blog-structure__link--header"
+        , to: urlPrefixSite <> "/about"
+        , children: [R.text "About"]
+        },
+        R.nav {
+          className: "blog-structure__nav"
+        , children: [
             R.ul {
-              className: "TODO"
-            , children: flip map co.children (\so ->
+              className: "blog-structure__list"
+            , children: flip map metadata (\co ->
                 R.li {
-                  className: "TODO"
+                  className: "blog-structure__list-item"
                 , children: [
                     link {
-                      className: "category-menu__link"
-                    , to: urlPrefixSite <> "/article/" <> so.subcategory
-                          <> "/all"
-                    , children: [R.text so.subcategory]
+                      className: "blog-structure__link"
+                    , to: urlPrefixSite <> "/article/" <> co.category <> "/all"
+                    , children: [R.text co.category]
+                    },
+                    R.ul {
+                      className: "blog-structure__list"
+                    , children: flip map co.children (\so ->
+                        R.li {
+                          className: "blog-structure__list-item"
+                        , children: [
+                            link {
+                              className: "blog-structure__link"
+                            , to: urlPrefixSite <> "/article/" <> co.category
+                                <> "/" <> so.subcategory
+                            , children: [R.text so.subcategory]
+                            }
+                          ]
+                        }
+                      )
                     }
                   ]
                 }
               )
             }
           ]
-        )
-      }
+        }
+      ]
+    }

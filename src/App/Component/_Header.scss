@@ -2,17 +2,8 @@
   $root: &;
   display: flex;
   justify-content: space-between;
+/*   align-items: bottom; */
   margin-bottom: 1.5em;
-  &__info {
-    display: flex;
-    #{$root}__about {
-      display: block;
-    }
-    #{$root}__title {
-      font-weight: bold;
-      margin-right: 1.5em;
-    }
-  }
   &__theme-button {
     background-color: var(--text-bg-reverse);
     padding: 3px;
@@ -31,5 +22,9 @@
       background: white;
       color: gray;
     }
+  }
+  &__title {
+    font-weight: bold;
+    margin-right: 1.5em;
   }
 }
