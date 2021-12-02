@@ -3,7 +3,7 @@
   text-align: left;
   &__content {
     font-family: 'Roboto', sans-serif;
-    width: min(70ch, 100%);
+    width: min(75ch, 100%);
     margin: 0 auto;
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Ubuntu', serif;
@@ -11,10 +11,13 @@
     code {
       background-color: var(--text-bg-hl);
       white-space: pre-wrap;
+      word-break: break-word;
+    }
+    figure {
+      text-align: center;
     }
     figcaption {
       padding: 0.5em 0;
-      text-align: center;
     }
     pre {
       background-color: var(--text-bg-hl);
@@ -45,6 +48,33 @@
       }
       tr:nth-child(even) {
         background-color: var(--text-bg-hl);
+      }
+    }
+    .noob {
+/*       max-height: 40%; */
+/*       width: max(70%, 200px); */
+/*       text-align: center; */
+      width: 70%;
+    }
+    .graphviz {
+      &__arrow {
+        path, polygon {
+          stroke: var(--text-color);
+          fill: none;
+        }
+        polygon {
+        }
+        text {
+          fill: var(--text-color);
+        }
+      }
+      &__text {
+        path, polygon {
+          stroke: var(--text-color);
+        }
+        text {
+          fill: var(--text-color);
+        }
       }
     }
   }

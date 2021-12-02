@@ -15,12 +15,17 @@
   }
   &__theme-button {
     background-color: var(--text-bg-reverse);
+    padding: 3px;
     border: 2px solid var(--text-bg-reverse);
     border-radius: 0.3em;
     cursor: pointer;
     color: var(--text-bg);
-    &:hover {
+    white-space: pre;
+    &:focus, &:hover {
       box-shadow: 0 0 0px 5px var(--text-bg-reverse);
+    }
+    &:focus {
+      outline: none;
     }
     &--dark {
       background: white;

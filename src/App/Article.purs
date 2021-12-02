@@ -4,8 +4,8 @@ import Data.Array (concat)
 import Data.Foldable (find)
 import Data.Maybe (Maybe(..))
 import Data.Symbol (SProxy(..))
-import Prim.Row (class Lacks)
 import Prelude
+import Prim.Row (class Lacks)
 import Record as Record
 
 type Category = String

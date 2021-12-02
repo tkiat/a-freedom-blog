@@ -13,8 +13,8 @@ data Theme = Day | Dark
 derive instance eqTheme :: Eq Theme
 
 instance showTheme :: Show Theme where
-  show Day = "day"
-  show Dark = "dark"
+  show Day = " Day "
+  show Dark = "Night"
 
 localStorageThemeField :: String
 localStorageThemeField = "theme"
@@ -33,8 +33,8 @@ storeTheme x = do
   Storage.setItem localStorageThemeField (show x) localStorage
 
 stringToTheme :: String -> Maybe Theme
-stringToTheme "day" = Just Day
-stringToTheme "dark" = Just Dark
+stringToTheme " Day " = Just Day
+stringToTheme "Night" = Just Dark
 stringToTheme _ = Nothing
 
 toggleTheme :: Theme -> Theme

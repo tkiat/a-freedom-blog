@@ -4,7 +4,6 @@ import App.Component.Link (mkLink)
 import App.Config (urlPrefixSite)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
 import App.Theme (Theme(..), storeTheme, toggleTheme)
-import App.Utils (capitalize)
 import Effect (Effect)
 import Prelude
 import React.Basic.DOM as R
@@ -38,7 +37,7 @@ mkHeader = do
             id: "theme-button"
           , className: "header__theme-button" <>
               if theme == Dark then " header__theme-button--dark" else ""
-          , children: [R.text $ capitalize $ show $ toggleTheme theme]
+          , children: [R.text $ show $ toggleTheme theme]
           , onClick: handler targetValue $ (\_ ->
               let newTheme = toggleTheme theme
               in (setTheme newTheme) *> (storeTheme newTheme)
