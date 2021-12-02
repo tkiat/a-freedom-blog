@@ -2,17 +2,17 @@
   $root: &;
   display: flex;
   flex-direction: column;
-  padding-right: 1em;
-  padding-top: 0.5em;
+  padding: 0.5em 1.5em 0 0;
   &__link {
     text-decoration: none;
-    &:hover {
-      color: red !important;
-    }
-    &--header {
-      font-weight: bold;
-/*       margin-right: 1.5em; */
-      text-decoration: none;
+    &--active, &:hover {
+      &:after {
+        position: absolute;
+        content: " *";
+        color: var(--link-active-color);
+        font-weight: bold;
+        white-space: pre;
+      }
     }
   }
   &__list {

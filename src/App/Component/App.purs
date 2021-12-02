@@ -17,7 +17,6 @@ import Data.Either (Either(..))
 import Data.Foldable (find)
 import Data.Maybe (Maybe(..), isJust)
 import Prelude
-import React.Basic (fragment)
 import React.Basic.DOM as R
 import React.Basic.Hooks as Hooks
 import React.Basic.Hooks ((/\))
@@ -54,7 +53,12 @@ mkApp = do
                 Just About -> 
                   R.div {
                     className: "app__main"
-                  , children: [blogStructure {metadata}, about]
+                    , children: [
+                        blogStructure {
+                          metadata, url: {p1: "about", p2: ""}
+                        }
+                        , about
+                      ]
                   }
                 Just (ArticleTable p1 p2) ->
                   case find (\x -> x.category == p1) metadata of
@@ -64,7 +68,7 @@ mkApp = do
                       then R.div {
                         className: "app__main"
                       , children: [
-                          blogStructure {metadata}
+                          blogStructure {metadata, url: {p1, p2}}
                         , articleTable {categoryObj: c, subcategory: p2}
                         ]
                       }

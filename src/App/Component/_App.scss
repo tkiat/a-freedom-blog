@@ -5,6 +5,7 @@
   height: 100%;
   &__main {
     display: flex;
+/*     flex-direction: column; */
   }
   &__inner {
     --text-color: #000;
@@ -12,6 +13,7 @@
     --text-bg-hl: #eee;
     --text-bg-hl-more: #d7d7d7;
     --text-bg-reverse: #222;
+    --link-active-color: red;
     --link-hover-bg: #eee;
 
     padding: clamp(10px, 1.5vw, 20px);
@@ -25,6 +27,7 @@
       --text-bg-hl: #111;
       --text-bg-hl-more: #070707;
       --text-bg-reverse: #fff;
+      --link-active-color: yellow;
       --link-hover-bg: #444;
 
       @include hljs.a11y-dark;
@@ -34,7 +37,7 @@
           color: salmon;
         }
         &:active {
-          color: yellow;
+          color: var(--link-active-color);
         }
       }
     }
