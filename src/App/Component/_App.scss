@@ -36,7 +36,7 @@
   &__content {
     margin: 0 auto;
     width: min(calc(75ch + 1em), 100%);
-    padding: 1em;
+    padding: 1em 1em;
     min-height: 100vh;
     background: var(--text-bg);
     color: var(--text-color);
@@ -58,6 +58,8 @@
       flex-direction: column;
       gap: 1em;
       & > * {
+        padding: 0 !important;
+        margin: 0 !important;
         border: none !important;
       }
     }

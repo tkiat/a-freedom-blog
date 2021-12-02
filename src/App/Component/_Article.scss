@@ -1,11 +1,11 @@
 .article {
   font-size: 1rem;
   text-align: left;
-  margin-top: 1em;
   &__content {
     font-family: 'Merriweather', sans-serif;
-    width: min(calc(75ch + 1em), 100%);
     h1, h2, h3, h4, h5, h6 {
+      margin-top: 2.25em;
+      margin-bottom: 1.5em;
       font-family: 'Ubuntu', serif;
     }
     code {
@@ -24,7 +24,7 @@
       padding: 1em;
     }
     li {
-      line-height: 1.5;
+      line-height: 1.7;
       &:not(:last-child) {
         margin-bottom: 1em;
       }
@@ -35,7 +35,7 @@
       margin: 0 auto;
     }
     p {
-      line-height: 1.5;
+      line-height: 1.7;
     }
     table {
       border-spacing: 0 0.5em;
