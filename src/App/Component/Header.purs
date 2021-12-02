@@ -1,5 +1,6 @@
 module App.Component.Header where
 
+import App.Component.BackBtn (backBtn)
 import App.Component.Link (mkLink)
 import App.Config (urlPrefixSite)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
@@ -28,21 +29,18 @@ mkHeader = do
           , to: urlPrefixSite <> "/about"
           , children: [R.text "A Freedom Blog"]
           }
-        , R.a {
-            href: "javascript:history.back()"
-          , className: "header__back" <>
-              if hideBackBtn then " header__back--hidden" else ""
-          , children: [R.text "Back"]
+        , backBtn {
+            className: "header__backBtn" <>
+              if hideBackBtn then " header__backBtn--hidden" else ""
           }
         , R.button {
             className: "header__theme-button" <>
               if theme == Dark then " header__theme-button--dark" else ""
           , id: "theme-button"
           , children: [R.text $ show $ toggleTheme theme]
-          , onClick: handler targetValue $ (\_ ->
+          , onClick: handler targetValue $ \_ ->
               let newTheme = toggleTheme theme
               in (setTheme newTheme) *> (storeTheme newTheme)
-            )
           }
         ]
       }

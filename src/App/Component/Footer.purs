@@ -1,5 +1,6 @@
 module App.Component.Footer where
 
+import App.Component.BackBtn (backBtn)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
 import Prelude
 import React.Basic.DOM as R
@@ -10,11 +11,5 @@ mkFooter = do
     pure $
       R.footer {
         className: "footer"
-      , children: [
-          R.a {
-            href: "javascript:history.back()"
-          , className: "footer__back"
-          , children: [R.text "Back"]
-          }
-        ]
+        , children: [backBtn {className: "footer__backBtn"}]
       }

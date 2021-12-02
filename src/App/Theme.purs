@@ -2,7 +2,7 @@ module App.Theme where
 
 import Data.Maybe (Maybe(..), fromMaybe)
 import Effect (Effect)
-import Foreign.Window (isPreferColorSchemeDark)
+import Foreign.General (isPreferColorSchemeDark)
 import Prelude
 import Web.HTML (window)
 import Web.HTML.Window as Window
