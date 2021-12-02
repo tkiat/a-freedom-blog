@@ -1,8 +1,4 @@
-module App.Config (
-  maybeUrlPrefixSite
-, urlPrefixPost
-, urlPrefixSite
-) where
+module App.Config where
 
 import Data.Maybe (Maybe(..))
 import Prelude
@@ -14,6 +10,9 @@ maybeUrlPrefixSite = Nothing
 
 serveLocalPost :: Boolean
 serveLocalPost = false
+
+urlMetadata :: String
+urlMetadata = urlPrefixPost <> "/metadata.json"
 
 urlPrefixPost :: String
 urlPrefixPost =

@@ -5,7 +5,7 @@
 }
 
 html {
-  font-size: clamp(14px, 1.4vw, 32px);
+  font-size: clamp(14px, 1.35vw, 32px);
   font-family: 'Ubuntu', sans-serif;
   box-sizing: border-box;
   width: 100%;
@@ -14,4 +14,10 @@ html {
 
 body {
   height: 100%;
+}
+
+#root {
+  font-size: 1rem;
+  height: 100%;
+  width: 100%;
 }

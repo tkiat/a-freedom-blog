@@ -1,10 +1,10 @@
 .article {
   font-size: 1rem;
   text-align: left;
+  margin-top: 1em;
   &__content {
-    font-family: 'Roboto', sans-serif;
-    width: min(75ch, 100%);
-    margin: 0 auto;
+    font-family: 'Merriweather', sans-serif;
+    width: min(calc(75ch + 1em), 100%);
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Ubuntu', serif;
     }
@@ -49,12 +49,6 @@
       tr:nth-child(even) {
         background-color: var(--text-bg-hl);
       }
-    }
-    .noob {
-/*       max-height: 40%; */
-/*       width: max(70%, 200px); */
-/*       text-align: center; */
-      width: 70%;
     }
     .graphviz {
       &__arrow {

@@ -2,8 +2,15 @@
   $root: &;
   display: flex;
   justify-content: space-between;
-/*   align-items: bottom; */
-  margin-bottom: 1.5em;
+  & > * {
+    align-self: flex-end;
+  }
+  &__back {
+    flex: 1;
+    &--hidden {
+      display: none;
+    }
+  }
   &__theme-button {
     background-color: var(--text-bg-reverse);
     padding: 3px;
@@ -24,7 +31,11 @@
     }
   }
   &__title {
+    flex: 1;
     font-weight: bold;
-    margin-right: 1.5em;
+    text-decoration: none;
+    &:link, &:visited, &:hover, &:active {
+      color: var(--text-color) !important;
+    }
   }
 }

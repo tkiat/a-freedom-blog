@@ -3,6 +3,7 @@ module App.Component.Article where
 import Affjax.ResponseFormat as ResponseFormat
 import App.Article (ArticleSlug, Category, Subcategory)
 import App.Config (urlPrefixPost)
+import App.Component.Footer (mkFooter)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
 import App.Utils (asyncFetch, toFolderName)
 import Data.Either (Either(..))
@@ -20,6 +21,7 @@ type Props = {
 }
 mkArticle :: ComponentWithContext Props
 mkArticle = do
+  footer <- mkFooter
   mkComponentWithContext "Article"
     \{articleSlug: as, category: c, subcategory: s} -> React.do
     let url = joinWith "/"
@@ -36,5 +38,6 @@ mkArticle = do
               className: "article__content"
             , dangerouslySetInnerHTML: {__html: toMarkdown r}
             }
+          , footer unit
           ]
         }

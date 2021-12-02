@@ -1,44 +1,64 @@
 @use '../../Style/mixins-hljs' as hljs;
 
 .app {
-  $root: &;
-  height: 100%;
-  &__main {
-    display: flex;
-/*     flex-direction: column; */
-  }
-  &__inner {
-    --text-color: #000;
-    --text-bg: #fff;
-    --text-bg-hl: #eee;
-    --text-bg-hl-more: #d7d7d7;
-    --text-bg-reverse: #222;
-    --link-active-color: red;
-    --link-hover-bg: #eee;
+  @include hljs.a11y-light;
+  --text-color: #000;
+  --text-bg: #fff;
+  --text-bg-hl: #eee;
+  --text-bg-hl-more: #d7d7d7;
+  --text-bg-reverse: #222;
+  --link-active-color: red;
+  --link-hover-bg: #eee;
 
-    padding: clamp(10px, 1.5vw, 20px);
-    @include hljs.a11y-light;
+  $root: &;
+  width: 100%;
+  background: var(--text-bg-hl);
+  &--dark {
+    @include hljs.a11y-dark;
+    --text-color: #ddd;
+    --text-bg: #222;
+    --text-bg-hl: #111;
+    --text-bg-hl-more: #070707;
+    --text-bg-reverse: #fff;
+    --link-active-color: yellow;
+    --link-hover-bg: #444;
+
+    a {
+      color: turquoise;
+      &:visited {
+        color: salmon;
+      }
+      &:active {
+        color: var(--link-active-color);
+      }
+    }
+  }
+  &__content {
+    margin: 0 auto;
+    width: min(calc(75ch + 1em), 100%);
+    padding: 1em;
     min-height: 100vh;
     background: var(--text-bg);
     color: var(--text-color);
-    &--dark {
-      --text-color: #ddd;
-      --text-bg: #222;
-      --text-bg-hl: #111;
-      --text-bg-hl-more: #070707;
-      --text-bg-reverse: #fff;
-      --link-active-color: yellow;
-      --link-hover-bg: #444;
+  }
+  &__main {
+    display: flex;
+    margin-top: 1em;
+    & > *:not(:first-child) {
+      border-left: 2px dotted var(--text-color);
+      margin-left: 1em;
+      padding-left: 0.5em;
+    }
+  }
+}
 
-      @include hljs.a11y-dark;
-      a {
-        color: turquoise;
-        &:visited {
-          color: salmon;
-        }
-        &:active {
-          color: var(--link-active-color);
-        }
+@media screen and (max-width: 768px) {
+  .app {
+    &__main {
+      flex-direction: column;
+      gap: 1em;
+      & > * {
+        border: none !important;
       }
     }
   }

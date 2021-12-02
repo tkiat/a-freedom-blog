@@ -2,7 +2,7 @@
   $root: &;
   display: flex;
   flex-direction: column;
-  padding: 0.5em 1.5em 0 0;
+  padding: 0.5em 0 0 0;
   &__link {
     text-decoration: none;
     &--active, &:hover {
@@ -17,17 +17,18 @@
   }
   &__list {
     display: block;
-    margin: 0.2em 0 0 15px;
-    padding: 0px 0px 0px 0px;
+    margin: 0.2em 0 0 1em;
+    padding: 0;
     border-left: 1px solid var(--text-color);
     &-item {
       width: max-content;
+      padding: 0.1em 0;
       list-style-type: none;
       &::before {
         display: inline-block;
         content: ' ';
         height: 0.3em;
-        width: 10px;
+        width: 0.5em;
         border-top: 1px solid var(--text-color);
         border-top-color: var(--text-color);
       }

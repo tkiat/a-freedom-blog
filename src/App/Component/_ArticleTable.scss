@@ -13,6 +13,8 @@
   $body: "#{&}__body";
   #{$body}-row {
     height: max-content;
+    &:nth-child(even) {
+    }
     &:hover {
       background-color: var(--text-bg-hl);
     }

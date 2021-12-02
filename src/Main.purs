@@ -15,15 +15,13 @@ import Web.HTML (window)
 import Web.HTML.HTMLDocument (toNonElementParentNode)
 import Web.HTML.Window as Window
 
--- TODO shift title and theme to 70% whenopen article
-
 main :: Effect Unit
 main = do
   themeInit <- mkThemeInit
 
   doc <- Window.document =<< window
-  getElementById "app" (toNonElementParentNode doc) >>= case _ of
-    Nothing -> Exception.throw "element with id 'app' not found"
+  getElementById "root" (toNonElementParentNode doc) >>= case _ of
+    Nothing -> Exception.throw "element with id 'root' not found"
     Just a -> do
       ctx <- React.createContext Nothing
       routerProvider <- Reader.runReaderT mkRouterProvider ctx
