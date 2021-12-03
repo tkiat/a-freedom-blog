@@ -6,10 +6,13 @@ import App.Config (urlPrefixSite)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
 import App.Theme (Theme(..), storeTheme, toggleTheme)
 import Effect (Effect)
+import Effect.Console (log)
 import Prelude
 import React.Basic.DOM as R
 import React.Basic.DOM.Events (targetValue)
 import React.Basic.Events (handler)
+import Web.HTML (window)
+import Web.HTML.Window as Window
 
 type Props = {
   hideBackBtn :: Boolean,
@@ -38,9 +41,14 @@ mkHeader = do
               if theme == Dark then " header__theme-button--dark" else ""
           , id: "theme-button"
           , children: [R.text $ show $ toggleTheme theme]
-          , onClick: handler targetValue $ \_ ->
-              let newTheme = toggleTheme theme
-              in (setTheme newTheme) *> (storeTheme newTheme)
+          , onClick: handler targetValue $ \_ -> do
+              window >>= Window.scroll 0 500
+              yPos <- Window.scrollY =<< window
+              log $ show $ yPos
+
+--           , onClick: handler targetValue $ \_ ->
+--               let newTheme = toggleTheme theme
+--               in (setTheme newTheme) *> (storeTheme newTheme)
           }
         ]
       }
