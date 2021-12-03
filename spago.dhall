@@ -1,6 +1,6 @@
 { name = "my-project"
-, dependencies = [
-    "aff"
+, dependencies =
+  [ "aff"
   , "affjax"
   , "argonaut-codecs"
   , "arrays"
@@ -12,6 +12,7 @@
   , "foldable-traversable"
   , "foreign"
   , "integers"
+  , "js-timers"
   , "maybe"
   , "partial"
   , "prelude"

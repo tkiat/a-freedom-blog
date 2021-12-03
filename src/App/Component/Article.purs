@@ -9,6 +9,7 @@ import App.Utils (asyncFetch, toFolderName)
 import Data.Either (Either(..))
 import Data.Maybe (Maybe(..))
 import Data.String.Common (joinWith)
+import Effect.Timer as Timer
 import Foreign.Marked (toMarkdown)
 import Prelude
 import React.Basic.DOM as R
@@ -18,6 +19,12 @@ import Web.Event.Event (EventType(..))
 import Web.HTML (window)
 import Web.HTML.Window (scrollY, sessionStorage, toEventTarget)
 import Web.Storage.Storage as Storage
+
+--       maybePos <- Storage.getItem field sessionStorage
+--       let posStr = fromMaybe "0" maybePos
+--       let maybePosInt = fromString posStr
+--       let posInt = fromMaybe 0 maybePosInt
+--       Window.scroll 0 posInt w
 
 type Props = {
   articleSlug :: ArticleSlug,
@@ -35,34 +42,23 @@ mkArticle = do
     res <- asyncFetch ResponseFormat.string url
     React.useEffectOnce do
       w <- window
---       maybePos <- Storage.getItem field sessionStorage
---       let posStr = fromMaybe "0" maybePos
---       let maybePosInt = fromString posStr
---       let posInt = fromMaybe 0 maybePosInt
---       Window.scroll 0 posInt w
+      ss <- sessionStorage =<< window
 
+      let timeoutMs = 500
       e <- eventListener $ \_ -> do
-        sessionStorage <- sessionStorage =<< window
-        yPos <- scrollY =<< window
-        Storage.setItem field (show $ yPos) sessionStorage
+        id <- Timer.setTimeout timeoutMs do
+          yPos <- scrollY =<< window
+          Storage.setItem field (show $ yPos) ss
+        pure $ Timer.clearTimeout id
 
-      d <- eventListener $ \_ -> do
-        sessionStorage <- sessionStorage =<< window
-        Storage.setItem field "0" sessionStorage
-
-      addEventListener (EventType "beforeunload") e false (toEventTarget w)
-      addEventListener (EventType "popstate") d true (toEventTarget w)
-
-      pure $ do
-        removeEventListener (EventType "beforeunload") e false (toEventTarget w)
-        removeEventListener (EventType "popstate") d true (toEventTarget w)
+      addEventListener (EventType "scroll") e false (toEventTarget w)
+      pure $ removeEventListener (EventType "scroll") e false (toEventTarget w)
 
     case res of
       Nothing -> pure $ R.text "Loading..."
       Just (Left e) -> pure $ R.text e
       Just (Right r) -> do
         -- TODO dangerous: use mutationobserver instead
-        -- https://stackoverflow.com/questions/44550462/reactjs-callback-for-dangerouslysetinnerhtml-complete
         let content = toMarkdown field r
         pure $ R.div {
           className: "article"
