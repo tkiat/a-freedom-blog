@@ -1,9 +1,11 @@
 { name = "my-project"
-, dependencies =
-  [ "affjax"
+, dependencies = [
+    "aff"
+  , "affjax"
   , "argonaut-codecs"
   , "arrays"
   , "console"
+  , "datetime"
   , "effect"
   , "either"
   , "exceptions"

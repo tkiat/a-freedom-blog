@@ -1,5 +1,6 @@
 const marked = require('marked')
 const hljs = require('highlight.js')
+// const sanitizeHtml = require('sanitize-html')
 
 marked.setOptions({
   highlight: function (code, lang) {
@@ -15,7 +16,16 @@ marked.setOptions({
   smartypants: false,
   xhtml: false,
 })
-// const sanitizeHtml = require('sanitize-html')
 
-// exports.toMarkdown = (content) => sanitizeHtml(marked(content))
-exports.toMarkdown = content => marked(content)
+exports.toMarkdown = field => content => {
+
+  const a = sessionStorage.getItem(field)
+  const b = parseInt(a)
+  const c = isNaN(b) ? 0 : b
+
+  setTimeout(function(){
+    window.scrollTo(0, c)
+  }, 500)
+  return marked(content)
+//   return sanitizeHtml(marked(content))
+}
