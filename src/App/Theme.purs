@@ -23,7 +23,8 @@ mkThemeInit :: Effect Theme
 mkThemeInit = do
   localStorage <- Window.localStorage =<< window
   maybeLocal <- Storage.getItem localStorageThemeField localStorage
-  let themePref = if isPreferColorSchemeDark unit then Dark else Day
+  isDark <- isPreferColorSchemeDark unit
+  let themePref = if isDark then Dark else Day
   let local = fromMaybe (show themePref) maybeLocal
   pure $ fromMaybe Day (stringToTheme local)
 
