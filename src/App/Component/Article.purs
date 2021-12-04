@@ -36,7 +36,7 @@ mkArticle = do
   footer <- mkFooter
   mkComponentWithContext "Article"
     \{articleSlug: a, category: c, subcategory: s} -> React.do
-    let field = s <> a
+    let field = s <> " - " <> a
     let url = joinWith "/"
           [urlPrefixPost, toFolderName c, toFolderName s, a <> ".md"]
     res <- asyncFetch ResponseFormat.string url

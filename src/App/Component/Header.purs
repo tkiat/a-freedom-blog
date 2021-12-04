@@ -4,7 +4,7 @@ import App.Component.BackBtn (backBtn)
 import App.Component.Link (mkLink)
 import App.Config (urlPrefixSite)
 import App.Routing (ComponentWithContext, mkComponentWithContext)
-import App.Theme (Theme(..), storeTheme, toggleTheme)
+import App.Theme (Theme, storeTheme, toggleTheme)
 import Effect (Effect)
 import Prelude
 import React.Basic.DOM as R
@@ -25,7 +25,8 @@ mkHeader = do
         className: "header"
       , children: [
           link {
-            className: "header__title"
+            className: "header__title" <>
+              if not hideBackBtn then " header__backBtn--hidden" else ""
           , to: urlPrefixSite <> "/about"
           , children: [R.text "A Freedom Blog"]
           }
@@ -34,8 +35,7 @@ mkHeader = do
               if hideBackBtn then " header__backBtn--hidden" else ""
           }
         , R.button {
-            className: "header__theme-button" <>
-              if theme == Dark then " header__theme-button--dark" else ""
+            className: "header__theme-button"
           , id: "theme-button"
           , children: [R.text $ show $ toggleTheme theme]
           , onClick: handler targetValue $ \_ ->

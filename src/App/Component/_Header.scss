@@ -6,7 +6,7 @@
     align-self: flex-end;
   }
   &__backBtn {
-    flex: 1;
+/*     flex: 1; */
     &--hidden {
       display: none;
     }
@@ -19,23 +19,20 @@
     cursor: pointer;
     color: var(--text-bg);
     white-space: pre;
-    &:focus, &:hover {
+    &:hover {
       box-shadow: 0 0 0px 5px var(--text-bg-reverse);
-    }
-    &:focus {
       outline: none;
-    }
-    &--dark {
-      background: white;
-      color: gray;
     }
   }
   &__title {
-    flex: 1;
+/*     flex: 1; */
     font-weight: bold;
     text-decoration: none;
     &:link, &:visited, &:hover, &:active {
       color: var(--text-color) !important;
+    }
+    &--hidden {
+      display: none;
     }
   }
 }
