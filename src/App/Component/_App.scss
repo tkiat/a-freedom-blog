@@ -12,6 +12,7 @@
 
   $root: &;
   width: 100%;
+  padding-left: calc(100vw - 100%); /* prevent scrollbar from shifting page */
   background: var(--text-bg-hl);
   &--dark {
     @include hljs.a11y-dark;
